@@ -17,7 +17,7 @@ namespace greenstar_api
     {
         [FunctionName("SchoolsList")]
         public static async Task<IActionResult> SchoolsList(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "schools")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "schools")] HttpRequest req,
             ILogger log) {
                 var dbConnect = Environment.GetEnvironmentVariable("AZURE_SQLSERVER_GREENSTARDB_CONNECTION");
                 
@@ -47,7 +47,7 @@ namespace greenstar_api
 
         [FunctionName("StandardsListForAGivenSchool")]
         public static async Task<IActionResult> StandardsListForAGivenSchool(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "standards/{id}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "standards/{id}")] HttpRequest req,
             ILogger log,
             string Id) {
                 
@@ -73,7 +73,7 @@ namespace greenstar_api
 
         [FunctionName("SectionsListForAGivenSchoolAndStandard")]
         public static async Task<IActionResult> SectionsListForAGivenSchoolAndStandard(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "sections")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "sections")] HttpRequest req,
             ILogger log) {
 
                 var schoolId = req.Query["school_id"];
@@ -104,7 +104,7 @@ namespace greenstar_api
 
         [FunctionName("GroupsListForAGivenSchoolAndStandardAndSection")]
         public static async Task<IActionResult> GroupsListForAGivenSchoolAndStandardAndSection(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "groups")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "groups")] HttpRequest req,
             ILogger log) {
                 var school_id = req.Query["school_id"];
                 var standardName = req.Query["standard"];
@@ -136,7 +136,7 @@ namespace greenstar_api
 
         [FunctionName("StudentListForAGivenSchoolAndStandardAndSection")]
         public static async Task<IActionResult> StudentListForAGivenSchoolAndStandardAndSection(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "students")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "students")] HttpRequest req,
             ILogger log) {
                 var school_id = req.Query["school_id"];
                 var standardName = req.Query["standard"];
@@ -173,7 +173,7 @@ namespace greenstar_api
 
         [FunctionName("ParameterListForAGivenSchoolAndStandardAndSectionAndStudentName")]
         public static async Task<IActionResult> ParameterListForAGivenSchoolAndStandardAndSectionAndStudentName(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "parameters")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "parameters")] HttpRequest req,
             ILogger log) {
                 var student_id = req.Query["student_id"];
 
